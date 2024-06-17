@@ -85,10 +85,10 @@ spacer.setAttribute("number", "spacer");
 rootContent.appendChild(spacer);
 
 const searchData = document.querySelector("#search-data");
-Array.from(searchList).sort().forEach((filter) => {
-    const filterOption = document.createElement("option");
-    filterOption.innerText = filter;
-    searchData.appendChild(filterOption);
+Array.from(searchList).sort().forEach(key => {
+    const searchOption = document.createElement("option");
+    searchOption.innerText = key;
+    searchData.appendChild(searchOption);
 });
 
 const scrollbar = document.querySelector("#scrollbar");

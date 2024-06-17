@@ -133,17 +133,17 @@
     margin: auto 0;
 }
 
-#menu-search, #menu-sorting {
+#menu-sorting {
     align-items: center;
     display: flex;
     flex-direction: column;
 }
 
-#menu-search:hover, #menu-sorting:hover {
+#menu-sorting:hover {
     filter: brightness(103%);
 }
 
-#search-header, #sorting-header {
+#sorting-header {
     z-index: 0;
 }
 
@@ -152,7 +152,7 @@
     display: flex;
 }
 
-#search-field, #sorting-field {
+#sorting-field {
     align-items: center;
     background-color: rgb(186, 157, 216);
     border-radius: 3vh;
@@ -160,23 +160,30 @@
     cursor: default;
     display: flex;
     filter: drop-shadow(0 0 0.5vh black);
+    flex-direction: column;
     font-family: cursive;
-    height: 5vh;
+    gap: 1vh;
+    height: fit-content;
     left: 50%;
     padding: 1vh 1vw;
     position: absolute;
     top: 4vh;
     transform: translateX(-50%);
+    width: 15vw;
 }
 
 #search-field {
-    width: 20vw;
-}
-
-#sorting-field {
-    flex-direction: column;
-    gap: 1vh;
-    height: fit-content;
+    align-items: center;
+    background-image: linear-gradient(rgba(64, 94, 179, 0.75), rgba(64, 94, 179, 0.75)), url("../../assets/backgrounds/noise.svg");
+    border-radius: 2vh;
+    box-shadow: 0 0.25vh 0 black;
+    display: flex;
+    font-family: cursive;
+    height: 3.5vh;
+    padding: 0.25vh 0.25vw;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
     width: 15vw;
 }
 
@@ -204,7 +211,7 @@
     height: 3vh;
     justify-content: center;
     position: absolute;
-    right: 1vw;
+    right: 0.5vw;
 }
 
 #search-clear:hover {
@@ -278,6 +285,9 @@
     }
 
     #search-field {
+        left: 0;
+        position: absolute;
+        top: 6vh;
         width: 50vw;
     }
 

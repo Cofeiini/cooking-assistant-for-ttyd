@@ -126,39 +126,27 @@ changeScale(menuOptionsScaleInput.value);
     menuOption.toggleFunction(menuOption.checkbox.checked);
 });
 
-const filterField = document.querySelector("#search-field");
 const sortingField = document.querySelector("#sorting-field");
-
-const filterInput = document.querySelector("#search-input");
-filterInput.value = "";
-
-filterField.classList.add("invisible");
-document.querySelector("#menu-search").addEventListener("click", () => {
-    sortingField.classList.add("invisible");
-    if (!filterField.classList.toggle("invisible")) {
-        filterInput.focus();
-    }
-});
-
 sortingField.classList.add("invisible");
 document.querySelector("#menu-sorting").addEventListener("click", () => {
-    filterField.classList.add("invisible");
     sortingField.classList.toggle("invisible");
 });
 
-const filterClear = document.querySelector("#search-clear");
-filterClear.classList.add("invisible");
-filterClear.addEventListener("click", () => {
-    filterInput.value = "";
-    filterInput.dispatchEvent(new Event("input"));
+const searchInput = document.querySelector("#search-input");
+searchInput.value = "";
+const searchClear = document.querySelector("#search-clear");
+searchClear.classList.add("invisible");
+searchClear.addEventListener("click", () => {
+    searchInput.value = "";
+    searchInput.dispatchEvent(new Event("input"));
 });
 
-filterInput.addEventListener("input", () => {
-    const filterValue = filterInput.value.toLowerCase();
+searchInput.addEventListener("input", () => {
+    const searchValue = searchInput.value.toLowerCase();
 
-    filterClear.classList.remove("invisible");
-    if (filterValue.length === 0) {
-        filterClear.classList.add("invisible");
+    searchClear.classList.remove("invisible");
+    if (searchValue.length === 0) {
+        searchClear.classList.add("invisible");
     }
 
     document.querySelectorAll(".list-node").forEach(node => {
@@ -170,7 +158,7 @@ filterInput.addEventListener("input", () => {
 
         const recipeName = node.querySelector(".list-item-label").textContent.toLowerCase();
         const ingredientNames = Array.from(node.querySelectorAll(".list-ingredient-label")).map(ingredient => ingredient.textContent.toLowerCase());
-        if ((filterValue.length === 0) || recipeName.includes(filterValue) || ingredientNames.some(item => item.includes(filterValue))) {
+        if ((searchValue.length === 0) || recipeName.includes(searchValue) || ingredientNames.some(item => item.includes(searchValue))) {
             node.classList.remove("hidden");
         }
     });
