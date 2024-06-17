@@ -1,0 +1,160 @@
+.list-item {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.list-item-container {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    margin-right: calc(2vw * var(--scale));
+    position: relative;
+    z-index: 1;
+}
+
+.list-item-background {
+    aspect-ratio: 1;
+    background-color: #BA9670;
+    display: flex;
+    filter: drop-shadow(0 0 0.25vh black);
+    height: calc(8vh * var(--scale));
+    position: relative;
+}
+
+.list-node:nth-child(even) .list-item-background {
+    background-color: #AD835A;
+}
+
+.list-item-slot {
+    aspect-ratio: 1;
+    background-color: #D0A981;
+    display: flex;
+    flex-direction: column;
+    height: calc(5vh * var(--scale));
+    justify-content: center;
+    left: 50%;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.list-node:nth-child(even) .list-item-slot {
+    background-color: #C09365;
+}
+
+.list-item-image {
+    aspect-ratio: 1;
+    height: calc(8vh * var(--scale));
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.list-item-cookbook {
+    display: flex;
+    height: calc(3vh * var(--scale));
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translate(25%, -25%);
+}
+
+.list-item-cookbook:hover {
+    filter: drop-shadow(0 0 0.25vh white);
+}
+
+.list-item-number {
+    align-items: end;
+    aspect-ratio: 1;
+    color: black;
+    display: flex;
+    font-size: calc(2vh * var(--scale));
+    height: calc(2vh * var(--scale));
+    justify-content: left;
+    left: 0;
+    position: absolute;
+    text-shadow: 0 0 3px white;
+    top: 0;
+}
+
+.list-item-label {
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5vh;
+    bottom: 0;
+    box-shadow: 0 0 0.5vh black;
+    color: black;
+    display: inline-flex;
+    font-family: cursive;
+    font-size: calc(1.5vh * var(--scale));
+    left: 50%;
+    padding: 0.25vh 0.5vw;
+    position: absolute;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.list-item-coin {
+    position: relative;
+}
+
+.list-item-coin-container {
+    display: flex;
+    justify-content: left;
+}
+
+.list-item-coin-image {
+    aspect-ratio: 1;
+    height: calc(7vh * var(--scale));
+    position: relative;
+}
+
+.list-item-coin-label {
+    align-items: center;
+    color: black;
+    display: flex;
+    font-family: cursive;
+    font-size: calc(2vh * var(--scale));
+    position: relative;
+}
+
+@media screen and (orientation: portrait) {
+    .list-item-background {
+        height: calc(10vh * var(--scale));
+    }
+
+    .list-item-slot {
+        height: calc(6vh * var(--scale));
+    }
+
+    .list-item-cookbook {
+        height: calc(4vh * var(--scale));
+    }
+
+    .list-item-number {
+        font-size: calc(2.5vh * var(--scale));
+        height: calc(2.5vh * var(--scale));
+    }
+
+    .list-item-label {
+        border-radius: 5vh;
+        bottom: 0;
+        font-size: calc(1.5vh * var(--scale));
+        left: 50%;
+        position: absolute;
+        top: unset;
+        transform: translateX(-50%);
+        z-index: 1;
+    }
+
+    .list-item-coin-label {
+        font-size: calc(1.5vh * var(--scale));
+        left: 50%;
+        position: absolute;
+        text-shadow: 0 0 0.5vh white;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+}

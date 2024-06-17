@@ -1,0 +1,36 @@
+.list-node {
+    cursor: pointer;
+    display: table-row;
+    height: calc(8vh * var(--scale));
+    position: relative;
+}
+
+.list-node::before {
+    background-color: rgb(248, 248, 248);
+    background-image: linear-gradient(rgba(248, 248, 248, 0.75), rgba(248, 248, 248, 0.75)), url("../../assets/backgrounds/noise.svg");
+    border-radius: 3vh;
+    box-shadow: 0 0.5vh 0.5vh black, 0 0.5vh 0 white inset;
+    content: "";
+    height: calc(6vh * var(--scale));
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% + 2vw);
+}
+
+.list-node.highlighted {
+    filter: brightness(103%);
+    z-index: 1;
+}
+
+.list-node.highlighted::before {
+    box-shadow: 0 0 4vh black, 0 0.5vh 0 white inset;
+}
+
+@media screen and (orientation: portrait) {
+    .list-node::before {
+        height: calc(9vh * var(--scale));
+        width: calc(100% + 8vw);
+    }
+}

@@ -1,0 +1,294 @@
+#utility-header {
+    background-color: rgb(248, 248, 248);
+    background-image: linear-gradient(rgba(248, 248, 248, 0.75), rgba(248, 248, 248, 0.75)), url("../../assets/backgrounds/noise.svg");
+    color: black;
+    display: flex;
+    font-family: cursive;
+    height: 4vh;
+    left: 0;
+    position: absolute;
+    top: 6vh;
+    width: 100%;
+    z-index: 2;
+}
+
+.header-button {
+    background-image: linear-gradient(rgba(64, 94, 179, 0.75), rgba(64, 94, 179, 0.75)), url("../../assets/backgrounds/noise.svg");
+    border-radius: 2vh;
+    box-shadow: 0 0.5vh 0 black, 0 0.5vh 0 white inset;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    font-size: 2vh;
+    height: 2.5vh;
+    padding: 0.5vh 0.5vw;
+    position: relative;
+    width: 12vw;
+    z-index: 1;
+}
+
+#options-header {
+    cursor: default;
+}
+
+#options-header:hover {
+    background-color: rgb(240, 240, 240);
+    box-shadow: 0 0 0.5vh black, 0 0.5vh 0 white inset;
+    height: max-content;
+}
+
+#options-header:hover > div {
+    display: flex;
+}
+
+#menu-options-title {
+    display: flex;
+    margin: auto;
+}
+
+.menu-option-button {
+    align-items: center;
+    background-color: rgb(248, 248, 248);
+    border-radius: 2vh;
+    box-shadow: 0 0.5vh 0 black, 0 0.5vh 0 white inset;
+    cursor: default;
+    display: none;
+    font-size: 2vh;
+    margin: 0.25vh 0;
+    padding: 0.5vh 0.5vw;
+    position: relative;
+}
+
+.menu-option-pointer {
+    cursor: pointer;
+}
+
+.menu-option-button:hover {
+    border-radius: 2vh 0 0 2vh;
+    box-shadow: 0 0.5vh 0 white inset;
+    filter: drop-shadow(0 0 0.5vh black);
+    z-index: 1;
+}
+
+.menu-option-button:hover > div {
+    display: flex;
+}
+
+.menu-option-container {
+    align-items: center;
+    background-color: rgb(248, 248, 248);
+    border-radius: 0 2vh 2vh 0;
+    box-shadow: 0 0.5vh 0 white inset;
+    cursor: pointer;
+    display: none;
+    flex-direction: row;
+    padding: 0.5vh 0.5vw;
+    pointer-events: auto;
+    position: absolute;
+    right: 0.1vw;
+    top: 0;
+    transform: translateX(100%);
+    white-space: nowrap;
+    z-index: 1;
+}
+
+#menu-options-scale-container {
+    border-radius: 0 2vh 2vh 2vh;
+    flex-direction: column;
+    width: 2vw;
+}
+
+.menu-option-container:hover {
+    box-shadow: 0 0 2vh white inset;
+}
+
+#menu-options-scale-input {
+    cursor: pointer;
+    width: 100%;
+    writing-mode: vertical-lr;
+}
+
+#menu-options-scale-label {
+    cursor: default;
+    padding: 0.25vh 0.25vw;
+    text-align: center;
+    width: 100%;
+}
+
+.menu-option-checkbox-label {
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.menu-option-checkbox {
+    aspect-ratio: 1;
+    cursor: pointer;
+    display: flex;
+    font-size: unset;
+    width: 1vw;
+}
+
+.menu-option-checkbox-title {
+    display: flex;
+    margin: auto 0;
+}
+
+#menu-filter, #menu-sorting {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+#menu-filter:hover, #menu-sorting:hover {
+    filter: brightness(103%);
+}
+
+#filter-header, #sorting-header {
+    z-index: 0;
+}
+
+#filter-label, #sorting-label {
+    cursor: pointer;
+    display: flex;
+}
+
+#filter-field, #sorting-field {
+    align-items: center;
+    background-color: rgb(186, 157, 216);
+    border-radius: 3vh;
+    box-shadow: 0 0.25vh 0 white inset;
+    cursor: default;
+    display: flex;
+    filter: drop-shadow(0 0 0.5vh black);
+    font-family: cursive;
+    height: 5vh;
+    left: 50%;
+    padding: 1vh 1vw;
+    position: absolute;
+    top: 4vh;
+    transform: translateX(-50%);
+}
+
+#filter-field {
+    width: 20vw;
+}
+
+#sorting-field {
+    flex-direction: column;
+    gap: 1vh;
+    height: fit-content;
+    width: 15vw;
+}
+
+#filter-input {
+    border-radius: 2vh;
+    box-sizing: border-box;
+    color: black;
+    font-family: cursive;
+    font-size: 2vh;
+    height: 100%;
+    outline: none;
+    padding: 0 0.5vw;
+    pointer-events: auto;
+    width: 100%;
+}
+
+#filter-clear {
+    align-items: center;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    color: black;
+    cursor: pointer;
+    display: flex;
+    font-size: 2vh;
+    height: 3vh;
+    justify-content: center;
+    position: absolute;
+    right: 1vw;
+}
+
+#filter-clear:hover {
+    background-color: rgba(222, 222, 222, 0.5);
+}
+
+#sorting-number,
+#sorting-name,
+#sorting-price {
+    background-image: repeating-linear-gradient(45deg, rgba(119, 88, 137, 0.5), rgba(119, 88, 137, 0.5) 1vw, rgba(128, 101, 144, 0.5) 1vw, rgba(128, 101, 144, 0.5) 2vw), repeating-linear-gradient(-45deg, rgba(119, 88, 137, 1), rgba(119, 88, 137, 1) 1vw, rgba(128, 101, 144, 1) 1vw, rgba(128, 101, 144, 1) 2vw);
+    border-radius: 2vh;
+    border-style: none;
+    box-shadow: 0 0.5vh 0 black, 0 0.5vh 0 white inset;
+    color: white;
+    cursor: pointer;
+    font-family: cursive;
+    font-size: 2vh;
+    font-weight: bold;
+    height: 100%;
+    padding: 0.5vh 0.5vw;
+    text-shadow: 0 -0.25vh 0 black;
+    width: 100%;
+}
+
+#sorting-number::after,
+#sorting-name::after,
+#sorting-price::after {
+    color: transparent;
+    content: "\1F846";
+    display: inline-flex;
+    font-size: 1.5vh;
+    margin-left: 0.25vw;
+    text-align: right;
+    text-shadow: none;
+}
+
+#sorting-number[direction="0"]::after,
+#sorting-name[direction="0"]::after,
+#sorting-price[direction="0"]::after {
+    color: rgb(254, 116, 117);
+    transform: rotate(-90deg);
+}
+
+#sorting-number[direction="1"]::after,
+#sorting-name[direction="1"]::after,
+#sorting-price[direction="1"]::after {
+    color: rgb(43, 200, 254);
+    transform: rotate(90deg);
+}
+
+#sorting-number:hover,
+#sorting-name:hover,
+#sorting-price:hover {
+    background-image: repeating-linear-gradient(45deg, rgba(213, 158, 254, 0.5), rgba(213, 158, 254, 0.5) 1vw, rgba(231, 181, 254, 0.5) 1vw, rgba(231, 181, 254, 0.5) 2vw), repeating-linear-gradient(-45deg, rgba(213, 158, 254, 1), rgba(213, 158, 254, 1) 1vw, rgba(231, 181, 254, 1) 1vw, rgba(231, 181, 254, 1) 2vw);
+    box-shadow: 0 0 0.5vh black, 0 0.5vh 0 white inset;
+    z-index: 1;
+}
+
+@media screen and (orientation: portrait) {
+    .header-button {
+        width: 25vw !important;
+    }
+
+    .menu-option-button {
+        font-size: 1.5vh !important;
+        height: auto !important;
+    }
+
+    #menu-options-scale-container {
+        width: 6vw !important;
+    }
+
+    #filter-field {
+        width: 50vw;
+    }
+
+    #sorting-field {
+        width: 25vw;
+    }
+
+    #filter-input,
+    #sorting-number,
+    #sorting-name,
+    #sorting-price {
+        font-size: 1.5vh;
+    }
+}

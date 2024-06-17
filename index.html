@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/favicon.png">
+    <link rel="stylesheet" href="src/css/list_ingredient.css">
+    <link rel="stylesheet" href="src/css/list_item.css">
+    <link rel="stylesheet" href="src/css/list_node.css">
+    <link rel="stylesheet" href="src/css/shopping-cart.css">
+    <link rel="stylesheet" href="src/css/tool-header.css">
+    <link rel="stylesheet" href="src/index.css">
+    <title>Cooking Assistant for Paper Mario: The Thousand-Year Door</title>
+</head>
+<body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+
+    <div id="cursor-anchor"></div>
+
+    <div id="root">
+        <img id="cursor" src="assets/cursor.png" alt="">
+        <div id="root-header">
+            <div id="root-title">Recipes</div>
+        </div>
+        <div id="utility-header">
+            <div id="options-header" class="header-button">
+                <div id="menu-options-title">Options</div>
+                <div id="menu-options-scale" class="menu-option-button menu-option-pointer">
+                    <div>Scale</div>
+                    <div id="menu-options-scale-container" class="menu-option-container">
+                        <input id="menu-options-scale-input" type="range" min="0.5" max="2.0" step="0.1" value="1.0">
+                        <label id="menu-options-scale-label" for="menu-options-scale-input">1.0</label>
+                    </div>
+                </div>
+                <div id="menu-options-extra" class="menu-option-button menu-option-pointer">
+                    <label for="menu-options-extra-checkbox" class="menu-option-checkbox-label">Allow extra recipes</label>
+                    <div id="menu-options-extra-container" class="menu-option-container">
+                        <input id="menu-options-extra-checkbox" type="checkbox" class="menu-option-checkbox">
+                        <div id="menu-options-extra-checkbox-title" class="menu-option-checkbox-title">OFF</div>
+                    </div>
+                </div>
+                <div id="menu-options-cookbook" class="menu-option-button menu-option-pointer">
+                    <label for="menu-options-cookbook-checkbox" class="menu-option-checkbox-label">Exclude cookbook</label>
+                    <div id="menu-options-cookbook-container" class="menu-option-container">
+                        <input id="menu-options-cookbook-checkbox" type="checkbox" class="menu-option-checkbox">
+                        <div id="menu-options-cookbook-checkbox-title" class="menu-option-checkbox-title">OFF</div>
+                    </div>
+                </div>
+                <div id="menu-options-unique" class="menu-option-button menu-option-pointer">
+                    <label for="menu-options-unique-checkbox" class="menu-option-checkbox-label">Unique only</label>
+                    <div id="menu-options-unique-container" class="menu-option-container">
+                        <input id="menu-options-unique-checkbox" type="checkbox" class="menu-option-checkbox">
+                        <div id="menu-options-unique-checkbox-title" class="menu-option-checkbox-title">OFF</div>
+                    </div>
+                </div>
+                <div id="menu-options-effects" class="menu-option-button menu-option-pointer">
+                    <label for="menu-options-effects-checkbox" class="menu-option-checkbox-label">Side Effects only</label>
+                    <div id="menu-options-effects-container" class="menu-option-container">
+                        <input id="menu-options-effects-checkbox" type="checkbox" class="menu-option-checkbox">
+                        <div id="menu-options-effects-checkbox-title" class="menu-option-checkbox-title">OFF</div>
+                    </div>
+                </div>
+            </div>
+            <div id="filter-header" class="header-button">
+                <div id="menu-filter">
+                    <label id="filter-label" for="filter-input">Filter</label>
+                </div>
+                <div id="filter-field">
+                    <input id="filter-input" type="text" list="filter-data" placeholder="No filter...">
+                    <div id="filter-clear">X</div>
+                    <datalist id="filter-data"></datalist>
+                </div>
+            </div>
+            <div id="sorting-header" class="header-button">
+                <div id="menu-sorting">
+                    <div id="sorting-label">Sort</div>
+                </div>
+                <div id="sorting-field">
+                    <button id="sorting-number">Number</button>
+                    <button id="sorting-name">Name</button>
+                    <button id="sorting-price">Price</button>
+                </div>
+            </div>
+            <div id="shopping-header">
+                <div id="shopping-cart">🛒
+                    <div id="shopping-cart-total">0</div>
+                </div>
+                <div id="shopping-list">
+                    <div id="shopping-list-container">
+                        <div id="shopping-list-content"></div>
+                    </div>
+                    <div id="shopping-list-footer">
+                        <div>Total</div>
+                        <div id="shopping-list-footer-total">0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="root-container">
+            <div id="preview">
+                <img id="preview-background" src="assets/preview/preview.png" alt="">
+                <img id="preview-image" src="assets/icons/unknown.png" alt="">
+                <div id="preview-text">Unknown</div>
+                <div id="preview-stats">
+                    <img src="assets/preview/heart_point.png" alt="">
+                    <div id="preview-stats-hp">???</div>
+                    <img src="assets/preview/flower_point.png" alt="">
+                    <div id="preview-stats-fp">???</div>
+                    <div id="preview-stats-effect"></div>
+                </div>
+            </div>
+            <div id="root-content-container">
+                <div id="root-content"></div>
+                <div id="scrollbar">
+                    <div id="scrollbar-track">
+                        <div id="scrollbar-thumb"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="root-footer">Made by Cofeiini</div>
+    </div>
+
+    <script src="src/index.js" type="module"></script>
+    <script src="src/js/menus.js" type="module"></script>
+</body>
+</html>
