@@ -126,14 +126,14 @@ changeScale(menuOptionsScaleInput.value);
     menuOption.toggleFunction(menuOption.checkbox.checked);
 });
 
-const filterField = document.querySelector("#filter-field");
+const filterField = document.querySelector("#search-field");
 const sortingField = document.querySelector("#sorting-field");
 
-const filterInput = document.querySelector("#filter-input");
+const filterInput = document.querySelector("#search-input");
 filterInput.value = "";
 
 filterField.classList.add("invisible");
-document.querySelector("#menu-filter").addEventListener("click", () => {
+document.querySelector("#menu-search").addEventListener("click", () => {
     sortingField.classList.add("invisible");
     if (!filterField.classList.toggle("invisible")) {
         filterInput.focus();
@@ -146,7 +146,7 @@ document.querySelector("#menu-sorting").addEventListener("click", () => {
     sortingField.classList.toggle("invisible");
 });
 
-const filterClear = document.querySelector("#filter-clear");
+const filterClear = document.querySelector("#search-clear");
 filterClear.classList.add("invisible");
 filterClear.addEventListener("click", () => {
     filterInput.value = "";

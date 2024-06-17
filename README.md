@@ -10,7 +10,7 @@ With the **Cooking Assistant** you can check recipes and plan your required ingr
   * By entry number
   * By recipe name
   * By common selling price
-* Filter recipes and ingredients
+* Search recipes and ingredients
 * Select recipes for cooking
   * Show total required ingredients
   * List individual ingredient counts

@@ -67,11 +67,11 @@ for (const recipe of recipes) {
     );
 }
 
-const filterList = new Set();
+const searchList = new Set();
 for (const recipe of recipes) {
-    filterList.add(recipe.name);
+    searchList.add(recipe.name);
     for (const option of recipe.options) {
-        option.ingredients.forEach((ingredient) => filterList.add(ingredient.name));
+        option.ingredients.forEach((ingredient) => searchList.add(ingredient.name));
 
         const node = recipeNode(recipe, option);
         node.setAttribute("extra", String(option?.extra ?? false));
@@ -84,11 +84,11 @@ spacer.classList.add("list-node", "vertical-spacer");
 spacer.setAttribute("number", "spacer");
 rootContent.appendChild(spacer);
 
-const filterData = document.querySelector("#filter-data");
-Array.from(filterList).sort().forEach((filter) => {
+const searchData = document.querySelector("#search-data");
+Array.from(searchList).sort().forEach((filter) => {
     const filterOption = document.createElement("option");
     filterOption.innerText = filter;
-    filterData.appendChild(filterOption);
+    searchData.appendChild(filterOption);
 });
 
 const scrollbar = document.querySelector("#scrollbar");
