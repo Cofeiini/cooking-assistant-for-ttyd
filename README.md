@@ -1,6 +1,8 @@
 # Cooking Assistant for Paper Mario: The Thousand-Year Door
 With the **Cooking Assistant** you can check recipes and plan your required ingredients for getting the in-game cooking trophy.
 
+> The app page can be found here [https://cofeiini.github.io/cooking-assistant-for-ttyd](https://cofeiini.github.io/cooking-assistant-for-ttyd)
+
 ## Features
 * List recipes
 * Show recipe details on hover
