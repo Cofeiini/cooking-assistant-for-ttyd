@@ -36,6 +36,7 @@ export const handleShoppingCart = () => {
 
         const nodeImage = document.createElement("img");
         nodeImage.className = "shopping-cart-item-image";
+        nodeImage.loading = "lazy";
         nodeImage.src = ingredient.image;
         nodeImage.alt = "";
         cartNode.appendChild(nodeImage);

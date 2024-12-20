@@ -40,6 +40,7 @@ export const recipeNode = (recipe, option) => {
 
     const image = document.createElement("img");
     image.className = "list-item-image";
+    image.loading = "lazy";
     image.src = recipe.image;
     image.alt = "";
     background.appendChild(image);
@@ -82,6 +83,7 @@ export const recipeNode = (recipe, option) => {
 
         const ingredientImage = document.createElement("img");
         ingredientImage.className = "list-ingredient-image";
+        ingredientImage.loading = "lazy";
         ingredientImage.src = ingredientData.image;
         ingredientImage.alt = "";
         ingredientItem.appendChild(ingredientImage);
@@ -102,7 +104,6 @@ export const recipeNode = (recipe, option) => {
     const spacer = document.createElement("div");
     spacer.classList.add("list-item", "horizontal-spacer");
     node.appendChild(spacer);
-
 
     const price = document.createElement("div");
     price.classList.add("list-item", "list-item-coin");
