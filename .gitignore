@@ -10,5 +10,5 @@ node_modules/
 # WebStorm config files
 .idea
 
-# Bun files
-*.lockb
+# Compiled output
+dist/
