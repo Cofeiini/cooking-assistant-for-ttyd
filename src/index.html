@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+        <title>Cooking Assistant for Paper Mario: The Thousand-Year Door</title>
+        <link href="css/list-ingredient.css" rel="stylesheet">
+        <link href="css/list-item.css" rel="stylesheet">
+        <link href="css/list-node.css" rel="stylesheet">
+        <link href="css/shopping-cart.css" rel="stylesheet">
+        <link href="css/tool-header.css" rel="stylesheet">
+        <link href="index.css" rel="stylesheet">
+
+        <script type="module" src="index.ts"></script>
+
+        <script type="module" src="ts/menus.ts"></script>
+        <link href="../assets/favicon.png" rel="icon">
+    </head>
+
+    <body>
+        <noscript>You need to enable JavaScript to run this app.</noscript>
+
+        <div id="root">
+            <img id="cursor" alt="" inert popover="manual" src="../assets/cursor.png">
+            <div id="root-header">Cooking Assistant for Paper Mario: The Thousand-Year Door</div>
+            <div id="utility-header">
+                <div style="display: flex; justify-self: start;">
+                    <div style="align-self: start;">
+                        <button id="options-menu" type="button" class="header-button" popovertarget="options-field">Options</button>
+                        <div id="options-field" class="menu-list-container" popover="hint">
+                            <div class="menu-list">
+                                <div id="menu-options-extra" class="menu-list-button">
+                                    <label for="menu-options-extra-checkbox">Allow extra recipes</label>
+                                    <div id="menu-options-extra-container" class="menu-option-container" popover="manual">
+                                        <input id="menu-options-extra-checkbox" type="checkbox" class="menu-option-checkbox">
+                                        <div id="menu-options-extra-checkbox-title" class="menu-option-checkbox-title">OFF</div>
+                                    </div>
+                                </div>
+                                <div id="menu-options-cookbook" class="menu-list-button">
+                                    <label for="menu-options-cookbook-checkbox">Exclude cookbook</label>
+                                    <div id="menu-options-cookbook-container" class="menu-option-container" popover="manual">
+                                        <input id="menu-options-cookbook-checkbox" type="checkbox" class="menu-option-checkbox">
+                                        <div id="menu-options-cookbook-checkbox-title" class="menu-option-checkbox-title">OFF</div>
+                                    </div>
+                                </div>
+                                <div id="menu-options-unique" class="menu-list-button">
+                                    <label for="menu-options-unique-checkbox">Unique only</label>
+                                    <div id="menu-options-unique-container" class="menu-option-container" popover="manual">
+                                        <input id="menu-options-unique-checkbox" type="checkbox" class="menu-option-checkbox">
+                                        <div id="menu-options-unique-checkbox-title" class="menu-option-checkbox-title">OFF</div>
+                                    </div>
+                                </div>
+                                <div id="menu-options-effects" class="menu-list-button">
+                                    <label for="menu-options-effects-checkbox">Side Effects only</label>
+                                    <div id="menu-options-effects-container" class="menu-option-container" popover="manual">
+                                        <input id="menu-options-effects-checkbox" type="checkbox" class="menu-option-checkbox">
+                                        <div id="menu-options-effects-checkbox-title" class="menu-option-checkbox-title">OFF</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="align-self: start;">
+                        <button id="sorting-menu" type="button" class="header-button" popovertarget="sorting-field">Sort</button>
+                        <div id="sorting-field" class="menu-list-container" popover="hint">
+                            <div class="menu-list">
+                                <button id="sorting-number" type="button">Number</button>
+                                <button id="sorting-name" type="button">Name</button>
+                                <button id="sorting-price" type="button">Price</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="search-field">
+                    <!--suppress HtmlFormInputWithoutLabel -->
+                    <input id="search-input" type="search" autocomplete="off" list="search-data" name="search-input" placeholder="Search..." size="10" value="">
+                    <datalist id="search-data"></datalist>
+                </div>
+                <div id="shopping-header">
+                    <button id="shopping-cart" type="submit" popovertarget="shopping-list">🛒</button>
+                    <div id="shopping-cart-total">0</div>
+                    <div id="shopping-list" popover="manual">
+                        <div id="shopping-list-content"></div>
+                        <div id="shopping-list-footer">
+                            <div style="display: table-cell; width: 4.0em; height: 4.0em;"></div>
+                            <div style="display: table-cell; vertical-align: middle;">Total</div>
+                            <div id="shopping-list-footer-total">0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="root-container">
+                <div id="preview">
+                    <div style="display: flex; position: relative; justify-content: center; flex: 1;">
+                        <img id="preview-background" alt="" src="../assets/preview/preview.png">
+                        <img id="preview-image" alt="" src="../assets/icons/unknown.png">
+                    </div>
+                    <div id="preview-text">Unknown</div>
+                    <div id="preview-stats">
+                        <img alt="" src="../assets/preview/heart_point.png">
+                        <div id="preview-stats-hp">???</div>
+                        <img alt="" src="../assets/preview/flower_point.png">
+                        <div id="preview-stats-fp">???</div>
+                    </div>
+                    <div id="preview-stats-effect"></div>
+                </div>
+                <div id="root-content-container">
+                    <div id="root-content">
+                        <div id="recipe-list">
+                        </div>
+                    </div>
+                    <div id="scrollbar">
+                        <div id="scrollbar-track">
+                            <div id="scrollbar-thumb"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="root-footer">Made by Cofeiini</div>
+        </div>
+    </body>
+</html>

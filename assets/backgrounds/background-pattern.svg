@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200">
+    <filter id="filter">
+        <feFlood flood-color="#9ac8ef" result="flood" />
+        <feComposite in="flood" in2="SourceGraphic" operator="in" />
+    </filter>
+    <text filter="url(#filter)" x="0" y="50" font-size="50px">🌻</text>
+    <text filter="url(#filter)" x="100" y="50" font-size="50px">🍄</text>
+    <text filter="url(#filter)" x="50" y="150" font-size="50px">⭐</text>
+    <text filter="url(#filter)" x="170" y="150" font-size="50px">♪</text>
+</svg>

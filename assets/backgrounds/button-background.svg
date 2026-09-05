@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+    <pattern id="pattern" patternUnits="userSpaceOnUse" width="4" height="4">
+        <rect x="0" y="0" width="4" height="4" fill="rgba(231, 181, 254, 1)" />
+        <line x1="-1" y1="1" x2="3" y2="5" stroke="rgba(213, 158, 254, 0.5)" stroke-width="1.5px" />
+        <line x1="1" y1="-1" x2="5" y2="3" stroke="rgba(213, 158, 254, 0.5)" stroke-width="1.5px" />
+        <line x1="-1" y1="3" x2="3" y2="-1" stroke="rgba(213, 158, 254, 0.5)" stroke-width="1.5px" />
+        <line x1="1" y1="5" x2="5" y2="1" stroke="rgba(213, 158, 254, 0.5)" stroke-width="1.5px" />
+    </pattern>
+    <rect width="32" height="32" fill="url(#pattern)" />
+</svg>

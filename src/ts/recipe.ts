@@ -1,26 +1,34 @@
-import { handleShoppingCart } from "./shopping_cart.js";
+import type { Recipe, RecipeOption } from "./recipe-data.ts";
+import { handleShoppingCart } from "./shopping-cart.ts";
 
-const rootContent = document.querySelector("#root-content");
-const cursorAnchor = document.querySelector("#cursor-anchor");
+const recipeList = document.querySelector<HTMLDivElement>("#recipe-list")!;
+const cursor = document.querySelector<HTMLDivElement>("#cursor")!;
 
-const previewHP = document.querySelector("#preview-stats-hp");
-const previewFP = document.querySelector("#preview-stats-fp");
-const previewEffect = document.querySelector("#preview-stats-effect");
-const previewImage = document.querySelector("#preview-image");
-const previewText = document.querySelector("#preview-text");
+const previewHP = document.querySelector<HTMLDivElement>("#preview-stats-hp")!;
+const previewFP = document.querySelector<HTMLDivElement>("#preview-stats-fp")!;
+const previewEffect = document.querySelector<HTMLDivElement>("#preview-stats-effect")!;
+const previewImage = document.querySelector<HTMLImageElement>("#preview-image")!;
+const previewText = document.querySelector<HTMLDivElement>("#preview-text")!;
 
-export const ingredientDatabase = {};
+export const ingredientDatabase = {} as Record<string, RecipeOption>;
 
-export const recipeNode = (recipe, option) => {
-    const id = crypto.randomUUID();
+let nodeCounter = 0;
+export const recipeNode = (recipe: Recipe, option: RecipeOption): HTMLDivElement => {
+    const id = String(++nodeCounter);
     ingredientDatabase[id] = option;
 
     const node = document.createElement("div");
     node.className = "list-node";
     node.setAttribute("id", id);
-    node.setAttribute("number", recipe.number);
-    node.setAttribute("price", recipe.stats.price);
+    node.setAttribute("number", String(recipe.number));
+    node.setAttribute("price", String(recipe.stats.price));
+    node.setAttribute("extra", String(option.extra ?? false));
     node.setAttribute("has-effect", String(recipe.stats.effect.length > 0));
+    node.setAttribute("cookbook", String(option.cookbook));
+
+    if (option.extra) {
+        node.classList.add("hidden-extra");
+    }
 
     const item = document.createElement("div");
     item.className = "list-item";
@@ -42,12 +50,12 @@ export const recipeNode = (recipe, option) => {
     image.className = "list-item-image";
     image.loading = "lazy";
     image.src = recipe.image;
-    image.alt = "";
+    image.alt = recipe.id;
     background.appendChild(image);
 
     const optionCookbook = document.createElement("img");
     optionCookbook.src = "assets/cookbook.png";
-    optionCookbook.alt = "";
+    optionCookbook.alt = "cookbook";
     optionCookbook.title = "Requires the Cookbook";
     optionCookbook.className = "list-item-cookbook";
     if (!option.cookbook) {
@@ -57,7 +65,7 @@ export const recipeNode = (recipe, option) => {
 
     const number = document.createElement("div");
     number.className = "list-item-number";
-    number.innerText = recipe.number;
+    number.innerText = String(recipe.number);
     background.appendChild(number);
 
     const label = document.createElement("div");
@@ -75,7 +83,7 @@ export const recipeNode = (recipe, option) => {
 
     const ingredientCount = option.ingredients.length;
     for (let i = 0; i < ingredientCount; ++i) {
-        const ingredientData = option.ingredients.at(i);
+        const ingredientData = option.ingredients.at(i)!;
 
         const ingredientItem = document.createElement("div");
         ingredientItem.className = "list-ingredient-item";
@@ -85,7 +93,7 @@ export const recipeNode = (recipe, option) => {
         ingredientImage.className = "list-ingredient-image";
         ingredientImage.loading = "lazy";
         ingredientImage.src = ingredientData.image;
-        ingredientImage.alt = "";
+        ingredientImage.alt = ingredientData.id;
         ingredientItem.appendChild(ingredientImage);
 
         const ingredientLabel = document.createElement("div");
@@ -96,14 +104,10 @@ export const recipeNode = (recipe, option) => {
         if ((i + 1) < ingredientCount) {
             const plus = document.createElement("div");
             plus.className = "list-ingredient-plus";
-            plus.innerText = "+";
+            plus.innerHTML = "&#x2795;";
             ingredientContainer.appendChild(plus);
         }
     }
-
-    const spacer = document.createElement("div");
-    spacer.classList.add("list-item", "horizontal-spacer");
-    node.appendChild(spacer);
 
     const price = document.createElement("div");
     price.classList.add("list-item", "list-item-coin");
@@ -121,19 +125,22 @@ export const recipeNode = (recipe, option) => {
 
     const priceLabel = document.createElement("div");
     priceLabel.className = "list-item-coin-label";
-    priceLabel.innerText = recipe.stats.price;
+    priceLabel.innerText = String(recipe.stats.price);
     priceContainer.appendChild(priceLabel);
 
     node.addEventListener("mouseenter", () => {
-        for (const child of rootContent.children) {
-            child.classList.remove("highlighted");
-        }
+        cursor.hidePopover();
 
+        recipeList.querySelectorAll<HTMLDivElement>(".highlighted").forEach(element => {
+            element.classList.remove("highlighted");
+        });
+
+        cursor.showPopover({ source: node });
+        cursor.classList.toggle("invisible", false);
         node.classList.add("highlighted");
-        node.appendChild(cursorAnchor);
 
-        previewHP.innerText = recipe.stats.hp;
-        previewFP.innerText = recipe.stats.fp;
+        previewHP.innerText = String(recipe.stats.hp);
+        previewFP.innerText = String(recipe.stats.fp);
         previewEffect.innerHTML = recipe.stats.effect.replace(/\*\*([\w\s]+)\*\*/g, "<b>$1</b>");
         previewEffect.setAttribute("has-content", String(recipe.stats.effect.length > 0));
         previewImage.src = recipe.image;
@@ -145,20 +152,12 @@ export const recipeNode = (recipe, option) => {
             return;
         }
 
+        node.style.removeProperty("--color-background");
         node.classList.toggle("selected");
-
-        const styleSheet = Array.from(document.styleSheets).find(sheet => sheet.href.toString().includes("list_node.css"));
-        const ruleList = Array.from(styleSheet.cssRules);
-        const ruleIndex = ruleList.indexOf(ruleList.find(entry => entry.cssText.includes(id)));
-        if (ruleIndex > -1) {
-            styleSheet.deleteRule(ruleIndex);
-        }
-
         if (node.classList.contains("selected")) {
             const color = Math.random().toString(16).substring(2, 8);
             const lighterColor = color.replace(/../g, value => Math.min(255, Math.max(0, parseInt(value, 16) + 25)).toString(16).padStart(2, "0"));
-            const newRule = `.list-node[id="${id}"]::before { background-image: repeating-linear-gradient(45deg, #${color}, #${color} 0.5vw, #${lighterColor} 0.5vw, #${lighterColor} 1vw); }`;
-            styleSheet.insertRule(newRule);
+            node.style.setProperty("--color-background", `repeating-linear-gradient(45deg, #${color} 0 0.5vw, #${lighterColor} 0.5vw 1vw)`);
         }
 
         handleShoppingCart();

@@ -1,0 +1,39 @@
+.list-node {
+    --color-background: unset;
+
+    align-items: center;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: auto 1fr calc(4.0em + 4.0ch);
+    position: relative;
+
+    &::before {
+        background-color: rgb(248, 248, 248);
+        background-image: var(--color-background, url("../../assets/backgrounds/noise.svg"));
+        border-radius: 3.0rem;
+        border-top: 0.5rem solid rgba(from white r g b / 50%);
+        box-shadow: 0 0.5rem 0 black;
+        content: "";
+        height: 3.5em;
+        left: -1.0rem;
+        position: absolute;
+        top: 0.5em;
+        width: calc(100% + 2.0rem);
+    }
+
+    &.highlighted {
+        z-index: 2;
+
+        &::before {
+            box-shadow: 0 0.5rem 0 black, 0 0 1.0rem white;
+        }
+    }
+
+    &:nth-child(even) .list-item-background {
+        background-color: #AD835A;
+    }
+
+    &:nth-child(even) .list-item-slot {
+        background-color: #C09365;
+    }
+}
